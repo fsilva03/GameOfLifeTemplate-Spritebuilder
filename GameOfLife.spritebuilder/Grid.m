@@ -19,7 +19,7 @@ static const int GRID_COLUMNS = 10;
     float _cellWidth;
     float _cellHeight;
     
-}
+
 
 -(void)onEnter{
     [super onEnter];
@@ -60,7 +60,7 @@ static const int GRID_COLUMNS = 10;
         y += _cellWidth;
     }
     
-    
+}
 }
 
 @end
