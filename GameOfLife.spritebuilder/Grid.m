@@ -54,7 +54,7 @@ static const int GRID_COLUMNS = 10;
             
             _gridArray[i][j] = creature;
             
-            creature.isAlive = NO;
+            creature.isAlive = YES;
             
             x += _cellHeight;
         }
