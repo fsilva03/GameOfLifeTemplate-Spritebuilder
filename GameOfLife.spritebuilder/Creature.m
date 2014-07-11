@@ -16,8 +16,8 @@
     
     if (self) {
         self.isAlive = NO;
-        
     }
+    
     return self;
 }
 
