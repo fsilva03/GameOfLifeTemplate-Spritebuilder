@@ -61,4 +61,14 @@ static const int GRID_COLUMNS = 10;
     }
 }
 
+-(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    
+    CGPoint touchLocation [[touch locationInNode:self];
+    
+    Creature *creature = [self creatureForTouchPosition:touchLocation];
+    
+    creature.isAlive = !creature.isAlive;
+    
+}
+
 @end
