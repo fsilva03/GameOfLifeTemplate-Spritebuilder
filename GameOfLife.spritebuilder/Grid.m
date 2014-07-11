@@ -56,7 +56,7 @@ static const int GRID_COLUMNS = 10;
             
             creature.isAlive = NO;
             
-            x+= _cellHeight;
+            x += _cellHeight;
         }
         y += _cellWidth;
     }
