@@ -124,4 +124,29 @@ static const int GRID_COLUMNS = 10;
     return isIndexValid;
 }
 
+-(void)updateCreatures {
+    int numAlive = 0;
+    for (int i = 0; i < [_gridArray count]; i++){
+        for (int j = 0; j < [_gridArray[i] count]; j++){
+            Creature *evolve = _gridArray[i][j];
+            
+            if ( evolve.livingNeighbors == 3) {
+                evolve.isAlive = YES;
+                numAlive += 1;
+            }
+            else {
+                if (evolve.livingNeighbors <=1 || evolve.livingNeighbors >=4){
+                    evolve.IsAlive = NO;
+                }
+            }
+        }
+    }
+    _totalAlive = numAlive;
+    
+}
+
+
+
+
+
 @end
