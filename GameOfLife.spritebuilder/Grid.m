@@ -79,4 +79,49 @@ static const int GRID_COLUMNS = 10;
     
 
 }
+
+-(void)evolveStep {
+    
+    [self countNeighbors];
+    
+    [self updateCreatures];
+    
+    _generation++;
+    
+}
+
+-(void)countNeighbors {
+    
+    for (int i = 0; i < [_gridArray count]; i++) {
+        for (int j = 0; j <[_gridArray[i] count]; j++) {    //iterates through whole grid
+            Creature *currentCreature = _gridArray[i][j];   //instance of Creature at each cell
+            
+            currentCreature.livingNeighbors = 0;            //sets neighbors to 0
+            
+            for (int x = (i-1); x <= (i+1); x++) {
+                for (int y = (j-1); y <= (j+1); y++) {      //iterate through 9 cells adjoined
+                    
+                    BOOL isIndexValid;
+                    isIndexValid = [self isIndexValidForX:x andY:y]; //checks for valid locations.
+                                                                     //(not outside due to sides).
+                    if (!((x == i) && (y == j)) && isIndexValid){    //if it's not same or invalid
+                        Creature *neighbor = _gridArray[x][y];       //instance of Creature to pinpoint
+                        if (neighbor.isAlive) {                      //a neighboring cell
+                            currentCreature.livingNeighbors += 1;    //if alive, add to count.
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+-(BOOL)isIndexValidForX:(int) x andY:(int) y {
+    BOOL isIndexValid = YES;
+    if (x < 0 || y < 0 || y >= GRID_COLUMNS || x >= GRID_ROWS) {
+        isIndexValid = NO;
+    }
+    return isIndexValid;
+}
+
 @end
