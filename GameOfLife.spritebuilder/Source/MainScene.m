@@ -31,7 +31,7 @@
 
 -(void)play {
     
-    [self schedule:@selector(step) interval:0.5f];
+    [self schedule:@selector(step) interval:0.1f];
     
 }
 
